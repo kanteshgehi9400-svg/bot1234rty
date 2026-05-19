@@ -290,14 +290,8 @@ def main():
     app.add_handler(CommandHandler("stats", admin_stats))
     app.add_handler(CallbackQueryHandler(button_handler))
 
-    app.job_queue.run_daily(
-        send_daily_tips,
-        time=datetime.strptime("09:00", "%H:%M").time()
-    )
-
     logger.info("Bot is running!")
     app.run_polling(drop_pending_updates=True)
-
 
 if __name__ == "__main__":
     main()
